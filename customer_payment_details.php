@@ -59,11 +59,33 @@
       <td><input name="payment_amt" type="text" id="payment_amt" class="validate[required,custom[onlyNumber]] form-control">
     </tr>
     <tr>
+      <td><span class="style7">Payment Date</span></td>
+      <td><span class="container">
+        <?php					
+      $date_default = "";
+     
       
-         <tr>
-<td height="48">Purchase Date </td>
-   <td><input name="payment_date" type="date" id="pay_date" class="validate[required,custom[date]] form-control">  </td>
-    </tr>
+	  $dat=date('Y-m-d');
+         $date_default =$dat;
+      $year=date('Y')+10;
+	  $syear=date('Y')+50;
+
+	  $myCalendar = new tc_calendar("payment_date", true, true);
+	  $myCalendar->setIcon("calendar/images/iconCalendar.gif");
+	  $myCalendar->setDate(date('d', strtotime($date_default))
+            , date('m', strtotime($date_default))
+
+
+            , date('Y', strtotime($date_default))
+			
+			
+			);
+      $myCalendar->dateAllow("$syear-01-01","$year-01-01");
+	  $myCalendar->setPath("calendar/");
+	  $myCalendar->setYearInterval(1800, date('Y'));
+	  $myCalendar->setAlignment('left', 'bottom');
+	  $myCalendar->writeScript();	  
+	  ?>
       </span></td>
 	  
     </tr>

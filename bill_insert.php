@@ -13,6 +13,13 @@ $dic=$_POST["dic"];
 
 $quant=$qnt;
 
+ $sql="select max(bill_id) from  bill_details";
+$res=$conn->query($sql);
+$row=mysqli_fetch_array($res);
+
+
+$bi=$row['bill_id'];
+$bi=$bi+1;
   
    //$uname=$_SESSION["uname"];
 //$sql_st="select * from suppliers where sup_email='$uname'";
@@ -26,9 +33,9 @@ $quant=$qnt;
 $res_pro=$conn->query($sql_pro);
 if($row_pro=mysqli_fetch_array($res_pro))
 {
-	if($row_pro["stock"]>=$quant)
+	$c_stock=$row_pro["stock"];
+	if($c_stock>=$quant)
 	{
-
 $c_stock=$row_pro["stock"];
  $cs_id=$c_stock - $quant;
 
@@ -64,18 +71,12 @@ document.location="bill.php?bmid=<?php echo $bmid;?>&c_id=<?php echo $c_id; ?>";
 
 <?php
 }
-?>
-<script>
-alert("Out of Stock");
-history.back();
-</script>
-<?php
 }
 else
 {
 ?>
 <script>
-alert("Out of Stock");
+alert("Please Add Stock Details");
 history.back();
 </script>
 <?php

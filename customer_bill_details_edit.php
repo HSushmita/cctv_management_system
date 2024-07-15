@@ -95,7 +95,7 @@ $row=mysqli_fetch_array($res);
     <tr>
       <td colspan="2"><div align="center">
         <input name="submit" type="submit"  value="SUBMIT" class="btn btn-primary">
-        <input name="reset" type="submit"   value="RESET"class="btn btn-danger" >
+        <input name="reset" type="reset" class="btn btn-danger" id="reset" value="Reset">
       </div></td>
     </tr>
   </table>

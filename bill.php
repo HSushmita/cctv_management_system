@@ -173,6 +173,7 @@ $uname=$_SESSION["uname"];
         <input type="submit" name="Submit" value="Add Product" class="btn btn-primary"></td>
     </tr>
   </table>
+  <p>&nbsp;  </p>
   <table class="table table-striped">
     <tr>
       <th>Sl NO</th>
@@ -180,6 +181,7 @@ $uname=$_SESSION["uname"];
       <th>Rate</th>
       <th>Qnt</th>
       <th>Total</th>
+      <th>Cancel</th>
     </tr>
 	<?php
 	$slno=0;
@@ -205,10 +207,9 @@ $uname=$_SESSION["uname"];
 		 
 		 $tot=($rate*$qnt);
 		 $discount=$discount + $dic;
-     $to=$to+$tot;
-		 $total=$to-$discount;
+		 $total=$total+$tot;
 		 $vat=($total*18)/100;
-		 $gtotal=($total+$vat);		
+		 $gtotal=($total+$vat)- $discount;		
 		?>
     <tr>
       <td>&nbsp;<?php echo $slno; ?></td>
@@ -216,28 +217,31 @@ $uname=$_SESSION["uname"];
       <td>&nbsp;<?php echo $rate; ?></td>
       <td>&nbsp;<?php echo $qnt; ?></td>
       <td>&nbsp;<?php echo $tot; ?></td>
-      
+      <td>&nbsp;<a href="billdetails_delete.php?bill_id=<?php echo $bill_id; ?>&bmid=<?php echo $bmid; ?>&c_id=<?php echo $c_id; ?>" title="Sl no <?php echo $slno; ?>" class="btn btn-danger">Cancel</a></td>
+    </tr>
+    
 	<?php
 	}
 	 ?>
-	<tr>
-	  <td colspan="4"><div align="right"><b>Discount</b></div></td>
-	  <td>&nbsp;<b><?php echo $discount; ?></b></td>
-	  <td>&nbsp;</td>
-	  </tr>
 	<tr>
 	  <th colspan="4"><div align="right"><b>Total</b></div></th>
 	  <th>&nbsp;<b><?php echo $total; ?><b></th>
 	  <td>&nbsp;</td>
 	  </tr>
 	<tr>
-      <td colspan="4"><div align="right"><b>GST</b></div></td>
+	  <td colspan="4"><div align="right"><b>Discount</b></div></td>
+	  <td>&nbsp;<b><?php echo $discount; ?></b></td>
+	  <td>&nbsp;</td>
+	  </tr>
+	<!--<tr>
+      <td colspan="4"><div align="right"><b>Vat</b></div></td>
       <td>&nbsp;<b><?php echo $vat; ?></b></td>
       <td>&nbsp;</td>
-    </tr>
-        <tr>
+    </tr> -->
+    <tr>
       <th colspan="4"><div align="right"><b>Grand Total </b></div></th>
       <th>&nbsp;<b><?php echo $gtotal; ?><b></th>
+      <td>&nbsp;</td>
     </tr>
   </table>
   <p>&nbsp;</p>

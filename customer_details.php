@@ -43,7 +43,10 @@
       <td>Customer Address </td>
       <td><textarea name="cust_address" class="validate[required] form-control" id="cust_address"></textarea></td>
     </tr>
-    
+    <tr>
+      <td>Customer city </td>
+      <td><input name="cust_city" type="text" id="cust_city"class="validate[required,custom[onlyLetter]] form-control"></td>
+    </tr>
     <tr>
       <td>Customer contact number </td>
       <td><input name="cust_contact_no" type="text" id="cust_contact_no" class="validate[required,custom[mobile]] form-control"></td>
@@ -55,7 +58,7 @@
     <tr>
       <td height="77" colspan="2"><div align="center">
         <input name="submit" type="submit" class="btn btn-primary"  id="submit" value="Submit">
-        <input name="reset" type="reset" class="btn btn-danger" id="reset" value="Reset">
+        <input name="reset" type="submit" class="btn btn-danger" id="reset" value="Reset">
 </div></td>
     </tr>
   </table>

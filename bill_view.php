@@ -20,7 +20,7 @@
                     </div>
                 </div> 
                  <!-- /. ROW  -->
-               <a href="bill.php" class="btn btn-primary">ADD NEW BILL</a>
+               
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
@@ -38,16 +38,17 @@
     <th width="191">Customer Name </th>
     <th width="143">Date</th>
 	<th width="143">Payment Status</th>
-	<th width="143">Paid</th>
+
     <th width="91">More Details</th>
-    <th width="224">Delete</th>
+    
   </tr>
   </thead>
   <tbody>
   <?php
   $dbid=1;
   include('db_connection.php');
-  $sql="select * from bill_master_details db, customer_details cd where db.cust_id=cd.cust_id";
+  $uname=$_SESSION['uname'];
+  $sql="select * from bill_master_details db, customer_details cd where db.cust_id=cd.cust_id and cd.cust_email_id='$uname'";
   $res=$conn->query($sql);
   while($row=mysqli_fetch_array($res))
   {
@@ -58,9 +59,9 @@
     <td><?php echo $row['cust_name'];?></td>
     <td><?php echo $row['Date'];?></td>
 	 <td><b><?php echo $row['P_Status'];?></b></td>
-    <td><a href="paid.php?bill_master_id=<?php echo $row['bill_master_id'];?>" class="btn btn-success">PAID</a></td>
+
 	<td><a href="bill details_more.php?bmid=<?php echo $row['bill_master_id'];?>&cust_id=<?php echo $row['cust_id']; ?>&dat=<?php echo $row['Date']; ?>" class="btn btn-warning">More Details</a></td>
-    <td><a href= "distributor_bill_master_delete.php?bill_master_id=<?php echo $row['bill_master_id'];?>" class="btn btn-danger">Delete</a></td>
+   
   </tr>
   <?php
   }

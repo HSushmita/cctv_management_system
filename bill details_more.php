@@ -172,18 +172,16 @@ $cust_id=$_REQUEST['cust_id'];
 		 $qnt=$row['P_Quantity'];
 		 $rate=$row['Rate'];
 		 $dic=$row['Discount'];
-
-         $tot=($rate*$qnt);
+		
+		 $tot=($rate*$qnt);
 		 $discount=$discount + $dic;
 		 $total=$total+$tot;
 		 $tot1=$total-$discount;
 		 $vat=($tot1*18)/100;
 		 $gtotal=($tot1+$vat);
 
-		 
 		$pname=$row['product_name'];
-		 
-		 ?>
+		?>	
     <tr>
       <td>&nbsp;<?php echo $slno++; ?></td>
       <td>&nbsp;<?php echo $pname; ?></td>
@@ -195,6 +193,7 @@ $cust_id=$_REQUEST['cust_id'];
 	<?php
 	}
 	?>
+	  </tr>
 	<tr>
 	  <td colspan="4"><div align="right"><b>Discount</b></div></td>
 	  <td>&nbsp;<b><?php echo $discount; ?></b></td>
@@ -202,7 +201,6 @@ $cust_id=$_REQUEST['cust_id'];
 	<tr>
 	  <th colspan="4"><div align="right"><b>Total</b></div></th>
 	  <th>&nbsp;<b><?php echo $tot1;?></b></th>
-	  </tr>
 	<tr>
       <td colspan="4"><div align="right"><b>Total GST (18%) </b></div></td>
       <td>&nbsp;<b><?php echo $vat; ?></b></td>
